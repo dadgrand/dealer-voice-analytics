@@ -1,0 +1,9 @@
+Единый стиль SVG-диаграмм (для консистентности):
+- viewBox ширина 960, шрифт "Segoe UI", текст #111827, вторичный #6b7280
+- Устройства/железо: fill #dbeafe, stroke #1d4ed8
+- Площадка/шлюз: fill #fef3c7, stroke #b45309
+- Облако РФ: fill #d1fae5, stroke #047857
+- CRM/продукт: fill #ede9fe, stroke #7c3aed
+- Опасность/риск: fill #fee2e2, stroke #b91c1c
+- Линии #64748b, стрелка marker arrow, пунктир = этап 2 / fallback
+- Скругление rx=8; заголовок диаграммы 16px bold; подписи 12.5-13.5px

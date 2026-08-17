@@ -1,0 +1,82 @@
+<section id="appA" class="appendix">
+  <h2>Приложение А. BOM бейджа: партномера</h2>
+  <table class="small">
+    <thead><tr><th>Компонент</th><th>Партномер</th><th>Примечание</th></tr></thead>
+    <tbody>
+      <tr><td>SoC-модуль</td><td>ESP32-S3-WROOM-1-N16R8</td><td>16 МБ flash / 8 МБ PSRAM; LCSC C2913202</td></tr>
+      <tr><td>Микрофоны ×2</td><td>TDK InvenSense ICS-43434</td><td>I2S 24 бит, SNR 64 дБА, AOP 120 дБ SPL; LCSC C5656610</td></tr>
+      <tr><td>Зарядка + power-path</td><td>TI BQ24074RGTR</td><td>работа при зарядке в доке; LCSC C54313</td></tr>
+      <tr><td>Fuel gauge</td><td>Maxim MAX17048G+T10</td><td>% батареи в телеметрию; LCSC C2682616</td></tr>
+      <tr><td>LDO 3.3 В</td><td>ME6211C33 (500 мА, IQ 60 мкА)</td><td>LCSC C82942</td></tr>
+      <tr><td>Аккумулятор</td><td>LiPo 103450, 2000 мА·ч, с PCM</td><td>типоразмер 10×34×50 мм</td></tr>
+      <tr><td>Накопитель</td><td>microSD 32 ГБ Class 10 + push-push держатель</td><td>промышленная серия — опция для −20…+85 °C</td></tr>
+      <tr><td>Индикация</td><td>WS2812B-2020</td><td>один RGB-светодиод состояния</td></tr>
+      <tr><td>Разъёмы</td><td>USB Type-C 16P (заряд/сервис), пого-пады ×4</td><td>док: 5 В + GND + 2 резерва (UART для диагностики)</td></tr>
+      <tr><td>Прошивка</td><td>ESP-IDF 5.x + libopus fixed-point</td><td>Opus 16 кГц mono 24 кбит/с, complexity 0–2</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="appB" class="appendix">
+  <h2>Приложение Б. Цены и бенчмарки: источники (проверено 17.08.2026)</h2>
+  <table class="small">
+    <thead><tr><th>Факт</th><th>Значение</th><th>Источник</th></tr></thead>
+    <tbody>
+      <tr><td>Выделенный сервер RTX 4090</td><td>от 56 900 ₽/мес</td><td>selectel.ru/services/gpu (офиц. прайс)</td></tr>
+      <tr><td>RTX 4090 почасово</td><td>82.76 ₽/ч (59 587 ₽/мес)</td><td>immers.cloud/gpu/4090 (офиц.)</td></tr>
+      <tr><td>VPS с RTX 4090</td><td>~29 000 ₽/мес</td><td>обзор ailist.ru 07.2026 (HOSTKEY)</td></tr>
+      <tr><td>Облачный L4 24 ГБ</td><td>от 69.88 ₽/ч</td><td>selectel.ru/services/gpu</td></tr>
+      <tr><td>A100 80 ГБ в РФ</td><td>212–317 ₽/ч</td><td>immers.cloud; cloud.ru тарифы 11.08.2026</td></tr>
+      <tr><td>S3 standard / cold</td><td>2.28–2.38 / 1.09–1.3 ₽/ГБ·мес</td><td>прайс VK Cloud с 12.01.2026; cnews market (Selectel); docs Яндекса</td></tr>
+      <tr><td>Managed PostgreSQL / ВМ 4 vCPU</td><td>от 5 502 / от 5 838 ₽/мес</td><td>toolfox.ru 03.2026 (Яндекс Облако)</td></tr>
+      <tr><td>WER GigaAM-v3 vs Whisper-v3 (телефония)</td><td>17.4 vs 27.4; Golos Farfield 3.9 vs 16.4</td><td>github.com/salute-developers/GigaAM, evaluation.md (офиц.)</td></tr>
+      <tr><td>Независимый бенчмарк русского ASR</td><td>GigaAM2 8.42% avg — лучший открытый</td><td>alphacephei.com/nsh/2025/04/18/russian-models.html</td></tr>
+      <tr><td>Скорость GigaAM (GPU, ONNX)</td><td>RTF 0.033 (≈30× поток)</td><td>habr.com/ru/articles/1042574</td></tr>
+      <tr><td>faster-whisper turbo batched</td><td>41× на L4; 70–100× на 4090</td><td>e2enetworks.com бенчмарк L4 2026; SYSTRAN/faster-whisper</td></tr>
+      <tr><td>T-one стриминг</td><td>чанк 300 мс, эмиссия ~330 мс, пайплайн 1–1.2 с; WER колл-центр 8.63%</td><td>github.com/voicekit-team/T-one; habr Т-Банка 07.2025</td></tr>
+      <tr><td>pyannote community-1</td><td>DER: AMI 17.0, DIHARD-3 20.2; exclusive-режим</td><td>huggingface.co/pyannote/speaker-diarization-community-1</td></tr>
+      <tr><td>Silero VAD</td><td>MIT, &lt;1 мс/чанк на CPU</td><td>github.com/snakers4/silero-vad</td></tr>
+      <tr><td>SpeechKit / SaluteSpeech (ASR API)</td><td>≈36 ₽/ч; у Сбера мин. платёж 15 000 ₽/мес</td><td>developers.sber.ru тарифы (офиц.); своды по SpeechKit</td></tr>
+      <tr><td>GigaChat API (юрлица, 15.07.2026)</td><td>Lite 65/32.5, Pro 500/250, Max 650/325 ₽/1М ток. (синхр./batch)</td><td>developers.sber.ru/docs/ru/gigachat/tariffs/legal-tariffs</td></tr>
+      <tr><td>T-Pro 2.0 (32B, русский)</td><td>файнтюн Qwen3-32B, гибридный ризонинг</td><td>habr.com/ru/companies/tbank/articles/928956</td></tr>
+      <tr><td>vLLM 32B AWQ на 4090</td><td>~65 ток/с decode; ≈180–300 разборов/GPU-ч</td><td>gigagpu.com, databasemart.com бенчмарки 2026</td></tr>
+      <tr><td>ESP32-S3, Opus 16 кГц</td><td>4.9× RT @ c0 (fixed-point)</td><td>components.espressif.com / esphome micro-opus benchmark</td></tr>
+      <tr><td>Потребление ESP32-S3</td><td>modem-sleep 33–81 мА; Wi-Fi TX до 283 мА</td><td>даташит ESP32-S3 v2.2, табл. 5-7…5-10</td></tr>
+      <tr><td>Компоненты бейджа</td><td>см. гл. 3.2</td><td>живые тарифные сетки LCSC, 17.08.2026</td></tr>
+      <tr><td>Plaud NotePin / HiDock H1</td><td>$159 / $269</td><td>plaud.ai, hidock.com (офиц. магазины)</td></tr>
+      <tr><td>Сеть площадки</td><td>N100 26 900 ₽; hAP ax² 12 490 ₽; Keenetic 4G ~9 000 ₽; SIM 700–1500 ₽/мес</td><td>nezz.ru/DNS; mikrotik.ru; Я.Маркет; media.mts.ru</td></tr>
+      <tr><td>Правовая база</td><td>152-ФЗ (ст. 6, 9, 11, 18, 21, 22), КоАП 13.11 (ред. 420-ФЗ), 233-ФЗ, ПП 1119, приказ ФСТЭК №21, ВС РФ 35-КГ16-18</td><td>consultant.ru, garant.ru, разъяснения РКН; детальный разбор — гл. 10</td></tr>
+      <tr><td>Курс</td><td>82.6–83 ₽/$</td><td>ЦБ РФ, середина августа 2026</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Пометка о методе: цены собирались по официальным страницам провайдеров и
+  производителей; там, где официальная страница недоступна роботу (капча у Яндекса), значение
+  сверено по двум независимым вторичным источникам и помечено в тексте как оценка.</p>
+</section>
+
+<section id="appC" class="appendix">
+  <h2>Приложение В. Схема LLM-разбора (сокращённо)</h2>
+  <pre>{
+  "conversation_id": "…",
+  "schema_version": "1.3",
+  "summary": "абзац: кто, что хотел, чем закончилось",
+  "deal_stage_reached": "contact|needs|presentation|test_drive|objections|pricing|commitment",
+  "outcome": "next_step_agreed|thinking|lost|purchased|no_sale_intent",
+  "next_step": {"what": "…", "when": "2026-08-21", "confirmed_by_client": true},
+  "objections": [
+    {"type": "price|trade_in|credit|competitor|trust|timing|other",
+     "quote_t0": 1082.4, "text": "дороже, чем в X",
+     "handled": true, "handling_quality": 1..5, "handling_quote_t0": 1104.0}
+  ],
+  "commitments_by_manager": [{"what": "КП по кредиту", "due": "…", "t0": 811.2}],
+  "checklist": [{"item": "спросил про трейд-ин", "done": false}],
+  "scores": {"needs_discovery": 1..5, "presentation": 1..5, "objection_handling": 1..5,
+             "closing": 1..5, "compliance_notice_given": true},
+  "risk_flags": ["hot_client_no_next_step", "competitor_mentioned_3x"],
+  "entities_for_matching": {"client_name": "…", "phone_last4": "…", "car_model": "…",
+                            "trade_in_model": "…"},
+  "special_category_spans": [{"t0": 51.0, "t1": 58.5, "reason": "health"}]  // к вырезанию
+}</pre>
+  <p class="small">Каждый содержательный факт несёт таймкод-якорь (t0) — проверка по аудио в
+  один клик. Поле special_category_spans обслуживает юридическое требование гл. 10.</p>
+</section>

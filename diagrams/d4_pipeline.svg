@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" font-family="Segoe UI, sans-serif">
+  <defs>
+    <marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#111827} .s{fill:#6b7280} .w{fill:#fff}
+    .ln{stroke:#64748b;stroke-width:1.6;fill:none;marker-end:url(#ar4)}
+    .box{fill:#f1f5f9;stroke:#94a3b8;stroke-width:1.4}
+    .st{fill:#d1fae5;stroke:#047857;stroke-width:1.5}
+    .tm{fill:#b45309;font-size:11.5px;font-weight:600}
+  </style>
+
+  <text x="32" y="36" class="t" font-size="16" font-weight="700">Путь данных: от микрофона до карточки в CRM (этап 1)</text>
+
+  <!-- Шаги -->
+  <rect x="32" y="60" width="430" height="66" rx="8" class="box"/>
+  <text x="46" y="82" class="t" font-size="13" font-weight="600">1. Запись на бейдже</text>
+  <text x="46" y="99" class="s" font-size="12">непрерывно всю смену; Opus 24 кбит/с; сегменты по 5 мин</text>
+  <text x="46" y="114" class="s" font-size="12">+ метаданные: badge_id, t₀/t₁, счётчик, уровень RMS каналов</text>
+  <text x="474" y="82" class="tm">задержка: 0</text>
+
+  <rect x="32" y="142" width="430" height="66" rx="8" class="box"/>
+  <text x="46" y="164" class="t" font-size="13" font-weight="600">2. Выгрузка: бейдж → шлюз → облако</text>
+  <text x="46" y="181" class="s" font-size="12">Wi-Fi оппортунистически в течение дня + гарантированно в доке;</text>
+  <text x="46" y="196" class="s" font-size="12">ретраи с резюмированием, дедуп по (badge_id, seq)</text>
+  <text x="474" y="164" class="tm">мин–часы (сеть)</text>
+
+  <rect x="32" y="224" width="430" height="66" rx="8" class="box"/>
+  <text x="46" y="246" class="t" font-size="13" font-weight="600">3. Сборка смены и сегментация на разговоры</text>
+  <text x="46" y="263" class="s" font-size="12">склейка сегментов; Silero VAD; границы: пауза &gt;3 мин, смена</text>
+  <text x="46" y="278" class="s" font-size="12">дальнего голоса, возврат в док → «кандидаты разговоров» 15–40 мин</text>
+  <text x="474" y="246" class="tm">CPU, секунды</text>
+
+  <rect x="32" y="306" width="430" height="66" rx="8" class="box"/>
+  <text x="46" y="328" class="t" font-size="13" font-weight="600">4. Диаризация: менеджер/клиент</text>
+  <text x="46" y="345" class="s" font-size="12">приор: канал №1 громче → говорит менеджер; pyannote community-1</text>
+  <text x="46" y="360" class="s" font-size="12">дочищает дальнюю речь (клиент vs соседние разговоры)</text>
+  <text x="474" y="328" class="tm">GPU ~4 мин/ч аудио</text>
+
+  <rect x="32" y="388" width="430" height="66" rx="8" class="box"/>
+  <text x="46" y="410" class="t" font-size="13" font-weight="600">5. ASR: GigaAM-v3 RNNT</text>
+  <text x="46" y="427" class="s" font-size="12">только речевые интервалы; пунктуация/нормализация e2e;</text>
+  <text x="46" y="442" class="s" font-size="12">транскрипт JSONL: {t₀, t₁, роль, текст, confidence}</text>
+  <text x="474" y="410" class="tm">GPU ~1.5 мин/ч</text>
+
+  <rect x="32" y="470" width="430" height="66" rx="8" class="box"/>
+  <text x="46" y="492" class="t" font-size="13" font-weight="600">6. LLM-разбор: T-Pro 2.0 (32B, JSON Schema)</text>
+  <text x="46" y="509" class="s" font-size="12">этап сделки, возражения и отработка, обязательства сторон,</text>
+  <text x="46" y="524" class="s" font-size="12">чек-лист методологии, оценка, candidate-сущности для CRM</text>
+  <text x="474" y="492" class="tm">~15 с/разговор</text>
+
+  <path class="ln" d="M247,126 L247,142"/>
+  <path class="ln" d="M247,208 L247,224"/>
+  <path class="ln" d="M247,290 L247,306"/>
+  <path class="ln" d="M247,372 L247,388"/>
+  <path class="ln" d="M247,454 L247,470"/>
+  <path class="ln" d="M462,503 C560,503 560,530 596,530"/>
+
+  <!-- Сопоставление -->
+  <rect x="596" y="60" width="332" height="234" rx="10" class="st"/>
+  <text x="612" y="86" class="t" font-size="14" font-weight="700">7. Сопоставление со сделкой в CRM</text>
+  <text x="612" y="110" class="t" font-size="12.5" font-weight="600">Шаг А (автоматически, ~60–70%):</text>
+  <text x="612" y="127" class="s" font-size="12">менеджер известен по бейджу, время — по записи;</text>
+  <text x="612" y="142" class="s" font-size="12">пересечение с визитами/тест-драйвами в календаре CRM</text>
+  <text x="612" y="166" class="t" font-size="12.5" font-weight="600">Шаг Б (автоматически, +15–20%):</text>
+  <text x="612" y="183" class="s" font-size="12">сущности из транскрипта: имя, телефон, модель,</text>
+  <text x="612" y="198" class="s" font-size="12">trade-in → fuzzy-match по базе клиентов/сделок</text>
+  <text x="612" y="222" class="t" font-size="12.5" font-weight="600">Шаг В (менеджер, 1 минута в день):</text>
+  <text x="612" y="239" class="s" font-size="12">Telegram-бот в конце смены: 5–8 карточек,</text>
+  <text x="612" y="254" class="s" font-size="12">подтвердить/поправить одним тапом;</text>
+  <text x="612" y="269" class="s" font-size="12">нет сделки → автосоздание лида в CRM</text>
+
+  <rect x="596" y="318" width="332" height="120" rx="10" class="st"/>
+  <text x="612" y="344" class="t" font-size="14" font-weight="700">8. Запись в CRM</text>
+  <text x="612" y="366" class="s" font-size="12">карточка разговора в сделке: разбор, чек-лист,</text>
+  <text x="612" y="381" class="s" font-size="12">плеер с переходами по транскрипту; идемпотентный</text>
+  <text x="612" y="396" class="s" font-size="12">upsert по conversation_id; агрегаты — в дашборд</text>
+  <text x="612" y="411" class="s" font-size="12">РОПа; сигналы «сделка под риском» — уведомлением</text>
+
+  <path class="ln" d="M762,294 L762,318"/>
+
+  <!-- SLA -->
+  <rect x="596" y="470" width="332" height="96" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <text x="612" y="496" class="t" font-size="13.5" font-weight="700">SLA этапа 1</text>
+  <text x="612" y="516" class="s" font-size="12">разговор до 16:00 → разбор в CRM в тот же день;</text>
+  <text x="612" y="531" class="s" font-size="12">вечерние → к 9:00 утра. Пиковый час (60 разговоров)</text>
+  <text x="612" y="546" class="s" font-size="12">парк GPU разбирает ≤ 2 часов после выгрузки</text>
+  <path class="ln" d="M762,438 L762,470"/>
+</svg>

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" font-family="Segoe UI, sans-serif">
+  <style>
+    .t{fill:#111827} .s{fill:#475569} .h{fill:#fff;font-size:13px;font-weight:700}
+    .ent{fill:#fff;stroke:#7c3aed;stroke-width:1.5} .hd{fill:#7c3aed}
+    .ent2{fill:#fff;stroke:#1d4ed8;stroke-width:1.5} .hd2{fill:#1d4ed8}
+    .ent3{fill:#fff;stroke:#047857;stroke-width:1.5} .hd3{fill:#047857}
+    .rel{stroke:#64748b;stroke-width:1.5;fill:none}
+    .card{fill:#64748b;font-size:11px}
+  </style>
+  <text x="32" y="34" class="t" font-size="16" font-weight="700">Модель данных CRM-модуля (ядро)</text>
+
+  <!-- Организация -->
+  <g>
+    <rect x="32" y="60" width="180" height="86" rx="6" class="ent2"/>
+    <rect x="32" y="60" width="180" height="26" rx="6" class="hd2"/>
+    <text x="44" y="78" class="h">Site (площадка)</text>
+    <text x="44" y="104" class="s" font-size="12">id, город, адрес</text>
+    <text x="44" y="121" class="s" font-size="12">gateway_id, часовой пояс</text>
+    <text x="44" y="138" class="s" font-size="12">график работы</text>
+  </g>
+  <g>
+    <rect x="32" y="176" width="180" height="86" rx="6" class="ent2"/>
+    <rect x="32" y="176" width="180" height="26" rx="6" class="hd2"/>
+    <text x="44" y="194" class="h">Manager</text>
+    <text x="44" y="220" class="s" font-size="12">id, ФИО, site_id</text>
+    <text x="44" y="237" class="s" font-size="12">согласие/ЛНА: дата, версия</text>
+    <text x="44" y="254" class="s" font-size="12">текущий badge_id</text>
+  </g>
+  <g>
+    <rect x="32" y="292" width="180" height="86" rx="6" class="ent2"/>
+    <rect x="32" y="292" width="180" height="26" rx="6" class="hd2"/>
+    <text x="44" y="310" class="h">Badge (устройство)</text>
+    <text x="44" y="336" class="s" font-size="12">id, серийник, прошивка</text>
+    <text x="44" y="353" class="s" font-size="12">состояние, батарея,</text>
+    <text x="44" y="370" class="s" font-size="12">последняя выгрузка</text>
+  </g>
+
+  <!-- Клиент/сделка -->
+  <g>
+    <rect x="300" y="60" width="180" height="86" rx="6" class="ent"/>
+    <rect x="300" y="60" width="180" height="26" rx="6" class="hd"/>
+    <text x="312" y="78" class="h">Client</text>
+    <text x="312" y="104" class="s" font-size="12">id, ФИО, телефоны</text>
+    <text x="312" y="121" class="s" font-size="12">согласие ПДн: дата, канал</text>
+    <text x="312" y="138" class="s" font-size="12">источник</text>
+  </g>
+  <g>
+    <rect x="300" y="176" width="180" height="102" rx="6" class="ent"/>
+    <rect x="300" y="176" width="180" height="26" rx="6" class="hd"/>
+    <text x="312" y="194" class="h">Deal (сделка)</text>
+    <text x="312" y="220" class="s" font-size="12">id, client_id, manager_id</text>
+    <text x="312" y="237" class="s" font-size="12">модель, этап воронки,</text>
+    <text x="312" y="254" class="s" font-size="12">сумма, trade-in, кредит</text>
+    <text x="312" y="271" class="s" font-size="12">статус, вероятность</text>
+  </g>
+  <g>
+    <rect x="300" y="308" width="180" height="86" rx="6" class="ent"/>
+    <rect x="300" y="308" width="180" height="26" rx="6" class="hd"/>
+    <text x="312" y="326" class="h">Visit (визит)</text>
+    <text x="312" y="352" class="s" font-size="12">id, deal_id, план/факт,</text>
+    <text x="312" y="369" class="s" font-size="12">тип: шоурум, тест-драйв,</text>
+    <text x="312" y="386" class="s" font-size="12">выдача</text>
+  </g>
+
+  <!-- Разговор -->
+  <g>
+    <rect x="568" y="106" width="180" height="118" rx="6" class="ent3"/>
+    <rect x="568" y="106" width="180" height="26" rx="6" class="hd3"/>
+    <text x="580" y="124" class="h">Conversation</text>
+    <text x="580" y="150" class="s" font-size="12">id, manager_id, t₀/t₁</text>
+    <text x="580" y="167" class="s" font-size="12">audio_url (S3), статус</text>
+    <text x="580" y="184" class="s" font-size="12">deal_id (nullable)</text>
+    <text x="580" y="201" class="s" font-size="12">match_confidence,</text>
+    <text x="580" y="218" class="s" font-size="12">match_source: A/Б/В</text>
+  </g>
+  <g>
+    <rect x="568" y="266" width="180" height="86" rx="6" class="ent3"/>
+    <rect x="568" y="266" width="180" height="26" rx="6" class="hd3"/>
+    <text x="580" y="284" class="h">Transcript</text>
+    <text x="580" y="310" class="s" font-size="12">conversation_id, JSONL:</text>
+    <text x="580" y="327" class="s" font-size="12">{t₀, t₁, роль, текст, conf}</text>
+    <text x="580" y="344" class="s" font-size="12">ПИИ-маскирование: флаг</text>
+  </g>
+
+  <!-- Аналитика -->
+  <g>
+    <rect x="768" y="60" width="176" height="150" rx="6" class="ent3"/>
+    <rect x="768" y="60" width="176" height="26" rx="6" class="hd3"/>
+    <text x="780" y="78" class="h">Analysis (разбор)</text>
+    <text x="780" y="104" class="s" font-size="12">conversation_id, версия</text>
+    <text x="780" y="121" class="s" font-size="12">этап сделки, итог</text>
+    <text x="780" y="138" class="s" font-size="12">возражения[]: тип,</text>
+    <text x="780" y="155" class="s" font-size="12">отработано ли, цитата</text>
+    <text x="780" y="172" class="s" font-size="12">чек-лист[], оценки</text>
+    <text x="780" y="189" class="s" font-size="12">обязательства[], риски</text>
+  </g>
+  <g>
+    <rect x="768" y="250" width="176" height="102" rx="6" class="ent3"/>
+    <rect x="768" y="250" width="176" height="26" rx="6" class="hd3"/>
+    <text x="780" y="268" class="h">CoachingTask</text>
+    <text x="780" y="294" class="s" font-size="12">manager_id, тема</text>
+    <text x="780" y="311" class="s" font-size="12">(из паттерна ошибок),</text>
+    <text x="780" y="328" class="s" font-size="12">примеры разговоров[],</text>
+    <text x="780" y="345" class="s" font-size="12">статус, дедлайн</text>
+  </g>
+
+  <!-- Связи -->
+  <path class="rel" d="M122,146 L122,176"/><text x="128" y="168" class="card">1:N</text>
+  <path class="rel" d="M122,262 L122,292"/><text x="128" y="284" class="card">1:N</text>
+  <path class="rel" d="M390,146 L390,176"/><text x="396" y="168" class="card">1:N</text>
+  <path class="rel" d="M390,278 L390,308"/><text x="396" y="300" class="card">1:N</text>
+  <path class="rel" d="M212,219 L300,219"/><text x="238" y="211" class="card">1:N</text>
+  <path class="rel" d="M212,219 C250,219 250,160 568,163"/><text x="500" y="155" class="card">1:N</text>
+  <path class="rel" d="M480,227 C530,227 530,190 568,190"/><text x="520" y="212" class="card">0..1:N</text>
+  <path class="rel" d="M658,224 L658,266"/><text x="664" y="250" class="card">1:1</text>
+  <path class="rel" d="M748,150 L768,150"/><text x="748" y="142" class="card">1:1..N</text>
+  <path class="rel" d="M856,210 L856,250"/><text x="862" y="236" class="card">N:M</text>
+
+  <text x="32" y="424" class="s" font-size="12">Аудио и транскрипты — в контуре аналитики (S3+PG, УЗ-3); CRM хранит ссылки и разбор. Retention: аудио 6 мес, транскрипты 24 мес (маскированные).</text>
+</svg>

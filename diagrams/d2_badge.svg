@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="Segoe UI, sans-serif">
+  <defs>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#111827} .s{fill:#6b7280} .ln{stroke:#64748b;stroke-width:1.6;fill:none;marker-end:url(#ar2)}
+    .lnp{stroke:#b91c1c;stroke-width:1.8;fill:none;marker-end:url(#ar2)}
+    .dev{fill:#dbeafe;stroke:#1d4ed8;stroke-width:1.5} .pwr{fill:#fee2e2;stroke:#b91c1c;stroke-width:1.5}
+    .mem{fill:#fef3c7;stroke:#b45309;stroke-width:1.5} .io{fill:#ede9fe;stroke:#7c3aed;stroke-width:1.5}
+  </style>
+
+  <rect x="16" y="16" width="928" height="438" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="32" y="44" class="t" font-size="16" font-weight="700">Бейдж-рекордер: блок-схема (BOM ≈ $52 при 100 шт / $31 при 1000 шт)</text>
+
+  <!-- Микрофоны -->
+  <rect x="40" y="80" width="200" height="64" rx="8" class="dev"/>
+  <text x="52" y="102" class="t" font-size="13" font-weight="600">MEMS-микрофон №1 (верх)</text>
+  <text x="52" y="119" class="s" font-size="11.5">ICS-43434 · SNR 64 дБА</text>
+  <text x="52" y="134" class="s" font-size="11.5">направлен ко рту менеджера</text>
+
+  <rect x="40" y="164" width="200" height="64" rx="8" class="dev"/>
+  <text x="52" y="186" class="t" font-size="13" font-weight="600">MEMS-микрофон №2 (фронт)</text>
+  <text x="52" y="203" class="s" font-size="11.5">ICS-43434 · AOP 120 дБ SPL</text>
+  <text x="52" y="218" class="s" font-size="11.5">клиент + акустика зала</text>
+
+  <!-- SoC -->
+  <rect x="330" y="72" width="300" height="200" rx="10" class="dev"/>
+  <text x="346" y="98" class="t" font-size="14.5" font-weight="700">ESP32-S3-WROOM-1-N16R8</text>
+  <text x="346" y="118" class="s" font-size="12">2 ядра LX7 240 МГц · 16 МБ flash · 8 МБ PSRAM</text>
+  <line x1="346" y1="128" x2="614" y2="128" stroke="#93c5fd"/>
+  <text x="346" y="148" class="t" font-size="12.5">• I2S std-режим: два микрофона (L/R по WS)</text>
+  <text x="346" y="166" class="t" font-size="12.5">• Энергетический VAD-гейтинг тишины</text>
+  <text x="346" y="184" class="t" font-size="12.5">• Opus 16 кГц mono 24 кбит/с, fixed-point, c0</text>
+  <text x="346" y="202" class="t" font-size="12.5">   (4.9× реального времени — запас ×4.9)</text>
+  <text x="346" y="220" class="t" font-size="12.5">• AES-шифрование сегментов + подпись</text>
+  <text x="346" y="238" class="t" font-size="12.5">• Wi-Fi 2.4 ГГц: выгрузка + OTA (в доке/паузах)</text>
+  <text x="346" y="256" class="s" font-size="12">запись: 45–70 мА · Wi-Fi burst: до 283 мА</text>
+
+  <path class="ln" d="M240,112 L330,112"/>
+  <text x="252" y="104" class="s" font-size="11">I2S (L)</text>
+  <path class="ln" d="M240,196 C290,196 290,150 330,150"/>
+  <text x="252" y="188" class="s" font-size="11">I2S (R)</text>
+
+  <!-- Память -->
+  <rect x="720" y="72" width="200" height="76" rx="8" class="mem"/>
+  <text x="732" y="94" class="t" font-size="13" font-weight="600">microSD 32 ГБ</text>
+  <text x="732" y="112" class="s" font-size="11.5">буфер на недели записи</text>
+  <text x="732" y="127" class="s" font-size="11.5">(смена ≈ 50 МБ в Opus);</text>
+  <text x="732" y="142" class="s" font-size="11.5">сегменты по 5 минут</text>
+  <path class="ln" d="M630,110 L720,110"/>
+  <text x="648" y="102" class="s" font-size="11">SDMMC</text>
+
+  <!-- Индикация -->
+  <rect x="720" y="180" width="200" height="92" rx="8" class="io"/>
+  <text x="732" y="202" class="t" font-size="13" font-weight="600">Интерфейс менеджера</text>
+  <text x="732" y="220" class="s" font-size="11.5">RGB-светодиод WS2812B:</text>
+  <text x="732" y="235" class="s" font-size="11.5">зелёный — пишет · синий — выгрузка</text>
+  <text x="732" y="250" class="s" font-size="11.5">красный — неисправность</text>
+  <text x="732" y="265" class="s" font-size="11.5">кнопка: только «пауза 10 мин»</text>
+  <path class="ln" d="M630,226 L720,226"/>
+
+  <!-- Питание -->
+  <rect x="40" y="310" width="200" height="120" rx="8" class="pwr"/>
+  <text x="52" y="332" class="t" font-size="13" font-weight="600">LiPo 103450 · 2000 мА·ч</text>
+  <text x="52" y="350" class="s" font-size="11.5">смена 11 ч ≈ 500–800 мА·ч</text>
+  <text x="52" y="365" class="s" font-size="11.5">→ запас &gt;2× (деградация</text>
+  <text x="52" y="380" class="s" font-size="11.5">до 80% за ~2 года — ОК)</text>
+  <text x="52" y="400" class="s" font-size="11.5">встроенная PCM-защита</text>
+
+  <rect x="330" y="310" width="300" height="120" rx="8" class="pwr"/>
+  <text x="346" y="332" class="t" font-size="13" font-weight="600">Питание и зарядка</text>
+  <text x="346" y="352" class="t" font-size="12.5">• BQ24074 — заряд + power-path</text>
+  <text x="346" y="370" class="t" font-size="12.5">   (работа во время зарядки в доке)</text>
+  <text x="346" y="388" class="t" font-size="12.5">• MAX17048 — fuel gauge (% в телеметрию)</text>
+  <text x="346" y="406" class="t" font-size="12.5">• LDO 3.3В · USB-C (сервис) · пого ×4 (док)</text>
+
+  <rect x="720" y="310" width="200" height="120" rx="8" class="mem"/>
+  <text x="732" y="332" class="t" font-size="13" font-weight="600">Док-станция (10 мест)</text>
+  <text x="732" y="352" class="s" font-size="11.5">пого: 5В зарядка</text>
+  <text x="732" y="367" class="s" font-size="11.5">постановка в док = триггер</text>
+  <text x="732" y="382" class="s" font-size="11.5">полной выгрузки по Wi-Fi;</text>
+  <text x="732" y="397" class="s" font-size="11.5">снятие с дока = старт записи</text>
+  <text x="732" y="412" class="s" font-size="11.5">и привязка к менеджеру</text>
+
+  <path class="lnp" d="M240,370 L330,370"/>
+  <path class="lnp" d="M720,370 L630,370"/>
+  <text x="656" y="362" class="s" font-size="11">5В пого</text>
+  <path class="ln" d="M480,310 L480,272"/>
+</svg>

@@ -1,0 +1,5 @@
+gigaam==0.1.0
+silero-vad>=6.0
+onnxruntime>=1.17
+soundfile>=0.13
+numpy>=1.26,<2   # onnxruntime, закреплённый gigaam, несовместим с numpy 2.x

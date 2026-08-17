@@ -1,0 +1,74 @@
+/* Печатный стиль документа */
+@page {
+  size: A4;
+  margin: 20mm 17mm 18mm 17mm;
+  @bottom-center { content: counter(page); font-family: "Segoe UI"; font-size: 9pt; color: #64748b; }
+  @top-left { content: string(doctitle); font-family: "Segoe UI"; font-size: 8pt; color: #94a3b8; }
+}
+@page :first { @bottom-center { content: none; } @top-left { content: none; } }
+
+html { font-size: 10.5pt; }
+body {
+  font-family: "Segoe UI", "PT Sans", sans-serif;
+  color: #111827; line-height: 1.5; margin: 0;
+}
+h1, h2, h3 { font-family: "Segoe UI Semibold", "Segoe UI", sans-serif; color: #0f172a; }
+
+/* Титул */
+.title-page { page-break-after: always; padding-top: 60mm; }
+.doc-kind { color: #2563eb; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 10pt; }
+.doc-title { font-size: 27pt; line-height: 1.2; margin: 8pt 0 14pt; string-set: doctitle "Система аналитики живых разговоров в дилерском центре"; }
+.doc-subtitle { font-size: 12pt; color: #475569; max-width: 150mm; }
+.title-meta { margin-top: 28mm; color: #64748b; font-size: 10pt; border-left: 3px solid #2563eb; padding-left: 12pt; }
+.title-meta p { margin: 3pt 0; }
+
+/* Оглавление */
+.toc { page-break-after: always; }
+.toc h2 { font-size: 16pt; }
+.toc ol { list-style: none; padding: 0; margin: 0; }
+.toc li { margin: 5pt 0; font-size: 10.5pt; }
+.toc a { text-decoration: none; color: #111827; display: flex; }
+.toc a::after { content: target-counter(attr(href), page); margin-left: auto; color: #64748b; }
+.toc .toc-line { flex: 1; border-bottom: 1px dotted #cbd5e1; margin: 0 6pt 3pt; }
+.toc .app { color: #475569; }
+
+/* Главы */
+section { page-break-before: always; }
+section.title-page, section#summary, section.appendix + section.appendix { page-break-before: auto; }
+h2 { font-size: 16.5pt; margin: 0 0 10pt; padding-bottom: 6pt; border-bottom: 2.5px solid #2563eb; }
+h3 { font-size: 12pt; margin: 14pt 0 6pt; }
+p { margin: 6pt 0; text-align: justify; }
+ul, ol { margin: 6pt 0; padding-left: 18pt; }
+li { margin: 3pt 0; }
+strong { color: #0f172a; }
+em { color: inherit; }
+
+/* Таблицы */
+table { border-collapse: collapse; width: 100%; margin: 8pt 0; font-size: 9.3pt; page-break-inside: auto; }
+th, td { border: 1px solid #cbd5e1; padding: 4.5pt 6pt; text-align: left; vertical-align: top; }
+th { background: #eff6ff; font-weight: 600; color: #1e293b; }
+tr { page-break-inside: avoid; }
+tbody tr:nth-child(even) td { background: #f8fafc; }
+td.ok { color: #047857; font-weight: 700; }
+table.small { font-size: 8.4pt; }
+table.decisions td { font-size: 9.6pt; }
+table.decisions td:first-child { width: 34%; }
+
+/* Диаграммы */
+figure { margin: 10pt 0; page-break-inside: avoid; }
+figure svg { width: 100%; height: auto; }
+figcaption { font-size: 8.8pt; color: #64748b; font-style: italic; margin-top: 3pt; }
+
+/* KPI-плашки резюме */
+.kpi-row { display: flex; gap: 8pt; margin-top: 12pt; }
+.kpi { flex: 1; border: 1.2px solid #bfdbfe; border-radius: 6pt; padding: 8pt; background: #eff6ff; }
+.kpi-num { font-size: 14.5pt; font-weight: 700; color: #1d4ed8; }
+.kpi-cap { font-size: 8.2pt; color: #475569; margin-top: 2pt; }
+
+/* Код */
+pre { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4pt; padding: 8pt;
+      font-family: Consolas, monospace; font-size: 8.6pt; line-height: 1.4; white-space: pre-wrap; }
+p.small { font-size: 8.8pt; color: #64748b; }
+
+/* Приложения компактнее */
+.appendix h2 { font-size: 13.5pt; border-bottom-width: 1.5px; }

@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+out/chrome-profile*/
+out/shots/
+out/document.html
+poc/analysis.json
+*.pyc
