@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" font-family="Segoe UI, sans-serif">
+  <rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
   <style>
     .t{fill:#111827} .s{fill:#475569} .h{fill:#fff;font-size:13px;font-weight:700}
     .ent{fill:#fff;stroke:#7c3aed;stroke-width:1.5} .hd{fill:#7c3aed}
